@@ -1,26 +1,56 @@
 import "./App.css";
+import { useState } from "react";
+import Form from "./components/Form";
+import Results from "./components/Results";
 
-function App() {
+function App(props) {
+  const [text, setText] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [password2, setPassword2] = useState("");
+
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (password !== password2) {
+      setErrorMessage(`Les mots de passe ne sont pas identiques`);
+    }
+  };
+
   return (
     <div className="container">
       <div className="form">
         <h1>Create account</h1>
+
+        {/* formulaire */}
         <div>
-          <p>Name</p>
-          <form action="">
-            <input type="text" placeholder="Jean Dupont" />
-            <p>Email</p>
-            <input type="text" placeholder="Jeandupont@lereacteur.io" />
-            <p>Password</p>
-            <input type="password" placeholder="JHrETOPIzzsdEE" />
-            <p>Confirm your password</p>
-            <input type="password" placeholder="JHrETOPIzzsdEE" />
-          </form>
+          <Form
+            text={text}
+            setText={setText}
+            email={email}
+            setEmail={setEmail}
+            password={password}
+            setPassword={setPassword}
+            password2={password2}
+            setPassword2={setPassword2}
+          />
         </div>
-        <div>
-          <button className="button">Register</button>
+
+        {/* Bouton Register */}
+        <div onSubmit={handleSubmit} className="button-register">
+          <button
+            onClick={() => {
+              console.log("clique");
+            }}
+            className="button"
+          >
+            Register
+          </button>
         </div>
       </div>
+
+      {/* footer */}
       <footer>
         <p>Made with React at Le Reacteur by Rico</p>
       </footer>

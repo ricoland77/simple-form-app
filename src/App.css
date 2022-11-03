@@ -55,3 +55,13 @@ footer {
   justify-content: center;
   align-items: center;
 }
+
+.results {
+  background-color: rgb(232, 232, 232);
+  width: 250px;
+  height: 150px;
+  padding-left: 30px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-top: 30px;
+}
